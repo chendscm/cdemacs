@@ -1,0 +1,24 @@
+[submodule "git/meow"]
+	path = git/meow
+	url = git@github.com:DogLooksGood/meow.git
+[submodule "git/dash"]
+	path = git/dash
+	url = git@github.com:magnars/dash.el.git
+[submodule "git/s"]
+	path = git/s
+	url = git@github.com:magnars/s.el.git
+[submodule "git/ctable"]
+	path = git/ctable
+	url = git@github.com:kiwanami/emacs-ctable.git
+[submodule "git/deferred"]
+	path = git/deferred
+	url = git@github.com:kiwanami/emacs-deferred.git
+[submodule "git/epc"]
+	path = git/epc
+	url = git@github.com:kiwanami/emacs-epc.git
+[submodule "git/eaf"]
+	path = git/eaf
+	url = git@github.com:manateelazycat/emacs-application-framework.git
+[submodule "git/eclipse-theme"]
+	path = git/eclipse-theme
+	url = git@github.com:abo-abo/eclipse-theme.git
