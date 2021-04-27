@@ -8,6 +8,7 @@
   (mapc (lambda (x)
 	  (add-to-list 'load-path (expand-file-name x emacs-git)))
 	(delete "." (delete ".." (directory-files emacs-git)))))
+(add-to-list 'load-path emacs-d)
 (add-to-list 'load-path (expand-file-name "modes/" emacs-d))
 (setq enable-local-variables :all)
 
@@ -26,12 +27,23 @@
 (csetq read-file-name-completion-ignore-case t)
 (csetq read-buffer-completion-ignore-case t)
 (prefer-coding-system 'utf-8)
+;;** minibuffer interaction
+(csetq enable-recursive-minibuffers t)
+;;** editor behavior
+(csetq ring-bell-function 'ignore)
 
 ;;* Bootstrap
+;;** autoloads
+(load (concat emacs-d "loaddefs.el") nil t)
 ;;** package
 (let ((file-name-handler-alist nil))
   (require 'eclipse-theme))
 
+;;* Use Package
+;;** rest
+(require 'cd-avy)
+(require 'hooks)
+
 ;;* tmp put here
-(require 'cd-meow)
-(require 'eaf)
+;; (require 'cd-meow)
+(require 'cd-eaf)

@@ -22,3 +22,21 @@
 [submodule "git/eclipse-theme"]
 	path = git/eclipse-theme
 	url = git@github.com:abo-abo/eclipse-theme.git
+[submodule "git/ace-window"]
+	path = git/ace-window
+	url = git@github.com:abo-abo/ace-window
+[submodule "git/avy"]
+	path = git/avy
+	url = git@github.com:abo-abo/avy.git
+[submodule "git/lispy"]
+	path = git/lispy
+	url = git@github.com:abo-abo/lispy.git
+[submodule "git/iedit"]
+	path = git/iedit
+	url = git@github.com:victorhge/iedit.git
+[submodule "git/swiper"]
+	path = git/swiper
+	url = git@github.com:abo-abo/swiper.git
+[submodule "git/hydra"]
+	path = git/hydra
+	url = git@github.com:abo-abo/hydra
