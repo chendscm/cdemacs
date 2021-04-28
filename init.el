@@ -65,7 +65,8 @@
 (load (concat emacs-d "loaddefs.el") nil t)
 ;;** package
 (let ((file-name-handler-alist nil))
-  (require 'eclipse-theme))
+  (require 'eclipse-theme)
+  (load-theme 'eclipse t))
 
 ;;* Use Package
 ;;** keys
