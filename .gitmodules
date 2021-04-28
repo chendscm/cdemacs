@@ -1,6 +1,3 @@
-[submodule "git/meow"]
-	path = git/meow
-	url = git@github.com:DogLooksGood/meow.git
 [submodule "git/dash"]
 	path = git/dash
 	url = git@github.com:magnars/dash.el.git
@@ -40,3 +37,6 @@
 [submodule "git/hydra"]
 	path = git/hydra
 	url = git@github.com:abo-abo/hydra
+[submodule "git/god-mode"]
+	path = git/god-mode
+	url = git@github.com:emacsorphanage/god-mode

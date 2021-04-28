@@ -1,3 +1,4 @@
+
 ;;; oremacs
 ;;* Base direcotry and load-path
 (defvar emacs-d
@@ -29,9 +30,36 @@
 (prefer-coding-system 'utf-8)
 ;;** minibuffer interaction
 (csetq enable-recursive-minibuffers t)
+(setq minibuffer-message-timeout 1)
+(minibuffer-depth-indicate-mode 1)
+(csetq rea-quoted-char-radix 16)
 ;;** editor behavior
+(csetq load-prefer-newer t)
+(csetq indent-tabs-mode nil)
 (csetq ring-bell-function 'ignore)
+(csetq highlight-nonselected-windows nil)
+(defalias 'yes-or-no-p 'y-or-n-p)
+;; (setq kill-buffer-query-functions nil)
+(add-hook 'server-switch-hook 'raise-frame)
+(defadvice set-window-dedicated-p (around no-dedicated-windows activate))
+;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=16737
+(setq x-selection-timeout 10)
+;; improves copying from a ssh -X Emacs.
+(setq x-selection-timeout 100)
+;;** internals
+(csetq gc-cons-threshold (* 10 1024 1024))
+(csetq ad-redefinition-action 'accept)
 
+;;** Rest
+
+;;*** Backups
+(setq backup-by-copying t)
+(setq backup-directory-alist (list
+                              (cons tramp-file-name-regexp "/tmp/")
+                              '("." . "~/.emacs.d/backups")))
+(setq delete-old-versions t)
+(setq version-control t)
+(setq create-lockfiles nil)
 ;;* Bootstrap
 ;;** autoloads
 (load (concat emacs-d "loaddefs.el") nil t)
@@ -40,10 +68,12 @@
   (require 'eclipse-theme))
 
 ;;* Use Package
+;;** keys
+(require 'keys)
+(require 'cd-god-mode)
 ;;** rest
 (require 'cd-avy)
 (require 'hooks)
 
 ;;* tmp put here
-;; (require 'cd-meow)
 (require 'cd-eaf)
