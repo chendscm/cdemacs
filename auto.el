@@ -13,3 +13,17 @@
     (mapcar #'update-directory-autoloads
 	    '("" "modes"))
     (update-directory-autoloads "")))
+
+;;* Utility
+;;;###autoload
+(defun cd-save-and-switch-buffer (&optional arg)
+  (interactive "P")
+  (when (and (buffer-file-name)
+             (not (bound-and-true-p archive-subfile-mode))
+             (not buffer-read-only))
+    (save-buffer))
+  (if arg
+      (let ((current-prefix-arg 4))
+        (call-interactively #'magit-status))
+    (unless (window-minibuffer-p)
+      (ivy-switch-buffer))))
