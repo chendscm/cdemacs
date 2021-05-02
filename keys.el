@@ -18,5 +18,4 @@
   ("bb" cd-save-and-switch-buffer "switch-buffer" :exit t)
   ("xo" ace-window "ace-window" :exit t))
 
-
 (provide 'keys)
