@@ -37,9 +37,6 @@
 [submodule "git/hydra"]
 	path = git/hydra
 	url = git@github.com:abo-abo/hydra
-[submodule "git/god-mode"]
-	path = git/god-mode
-	url = git@github.com:emacsorphanage/god-mode
 [submodule "git/lpy"]
 	path = git/lpy
 	url = git@github.com:abo-abo/lpy

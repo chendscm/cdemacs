@@ -13,4 +13,7 @@
 (setq eaf-proxy-host "127.0.0.1")
 (setq eaf-proxy-port "1080")
 
+;; god-mode
+(define-key eaf-mode-map "," 'hydra-dao/body)
+
 (provide 'cd-eaf)

@@ -1,4 +1,3 @@
-
 ;;; oremacs
 ;;* Base direcotry and load-path
 (defvar emacs-d
@@ -68,10 +67,14 @@
   (require 'eclipse-theme)
   (load-theme 'eclipse t))
 
+;;* Modes
+;;** global minor modes
+(require 'cd-ivy)
+
 ;;* Use Package
 ;;** keys
+(require 'cd-hydra)
 (require 'keys)
-(require 'cd-god-mode)
 ;;** rest
 (require 'cd-avy)
 (require 'hooks)

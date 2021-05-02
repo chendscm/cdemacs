@@ -1,5 +1,6 @@
 (require 'lispy)
 
+;;* Insert defun 
 ;;;###autoload
 (defun cd-quotes (arg)
   (interactive "P")
@@ -162,5 +163,18 @@ Take care of nested C++ templates."
         (t
          (insert "<>")
          (backward-char))))
+
+;;;###autoload
+(defun cd-comma ()
+  (interactive)
+  (cond ((region-active-p)
+         (lispy--surround-region "," ","))
+        (t
+         (insert ","))))
+
+;;* Self-insert
+(defun cd-self-insert ()
+  (interactive)
+  (if (looking-back)))
 
 (provide 'ora-ins)

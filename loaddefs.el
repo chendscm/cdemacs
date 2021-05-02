@@ -7,6 +7,13 @@
 
 ;;;***
 
+;;;### (autoloads nil "keys" "keys.el" (0 0 0 0))
+;;; Generated autoloads from keys.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "keys" '("hydra-dao")))
+
+;;;***
+
 ;;;### (autoloads nil "modes/cd-elisp" "modes/cd-elisp.el" (0 0 0
 ;;;;;;  0))
 ;;; Generated autoloads from modes/cd-elisp.el
@@ -15,11 +22,11 @@
 
 ;;;***
 
-;;;### (autoloads nil "modes/cd-god-mode" "modes/cd-god-mode.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from modes/cd-god-mode.el
+;;;### (autoloads nil "modes/cd-fonts" "modes/cd-fonts.el" (0 0 0
+;;;;;;  0))
+;;; Generated autoloads from modes/cd-fonts.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-god-mode" '("cd-god-mode-update-modeline")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-fonts" '("cd-set-font")))
 
 ;;;***
 
@@ -53,11 +60,24 @@ Threat is as function body when from endline before )" t nil)
 
 (autoload 'cd-angles "modes/cd-insert" nil t nil)
 
+(autoload 'cd-comma "modes/cd-insert" nil t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-insert" '("cd-self-insert")))
+
 ;;;***
 
-;;;### (autoloads nil nil ("hooks.el" "keys.el" "modes/cd-avy.el"
-;;;;;;  "modes/cd-eaf.el" "modes/cd-visuals.el" "modes/ora-visuals.el")
-;;;;;;  (0 0 0 0))
+;;;### (autoloads nil "modes/cd-python" "modes/cd-python.el" (0 0
+;;;;;;  0 0))
+;;; Generated autoloads from modes/cd-python.el
+
+(autoload 'cd-python-hook "modes/cd-python" nil nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-python" '("cd-" "python-newline-dedent")))
+
+;;;***
+
+;;;### (autoloads nil nil ("hooks.el" "modes/cd-avy.el" "modes/cd-hydra.el"
+;;;;;;  "modes/cd-ivy.el" "modes/cd-visuals.el") (0 0 0 0))
 
 ;;;***
 
@@ -70,5 +90,7 @@ Threat is as function body when from endline before )" t nil)
 
 
 \(fn &optional ARG)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "auto" '("cd-c-forward-sexp-function")))
 
 ;;;***

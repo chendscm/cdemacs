@@ -1,5 +1,5 @@
 ;;* fonts
-;; (require 'cd-fonts)
+(require 'cd-fonts)
 
 ;;* decorations
 (csetq tool-bar-mode nil)

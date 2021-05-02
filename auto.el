@@ -1,3 +1,16 @@
+;;* Navigation
+(defun cd-c-forward-sexp-function (arg)
+  (if (looking-at "^#")
+      (forward-esxp arg)
+    (let ((forward-esxp-function nil))
+      (forward-sexp arg)
+      (while (looking-at "[.-]")
+        (forward-sexp)))
+    (when (and (eq (char-after) ?.)
+               (looking-back "[0-9]+" (line-beginning-position)))
+      (forward-char)
+      (skip-chars-forward "0-9"))))
+
 ;;* Regex
 
 ;;;###autoload
