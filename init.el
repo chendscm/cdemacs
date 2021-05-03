@@ -81,3 +81,4 @@
 
 ;;* tmp put here
 (require 'cd-eaf)
+;; (require 'cd-python)

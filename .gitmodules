@@ -43,3 +43,21 @@
 [submodule "git/company-jedi"]
 	path = git/company-jedi
 	url = git@github.com:emacsorphanage/company-jedi
+[submodule "git/python-environment"]
+	path = git/python-environment
+	url = git@github.com:tkf/emacs-python-environment
+[submodule "git/compnay-mode"]
+	path = git/compnay-mode
+	url = git@github.com:company-mode/company-mode
+[submodule "git/jedi"]
+	path = git/jedi
+	url = git@github.com:tkf/emacs-jedi
+[submodule "git/zoutline"]
+	path = git/zoutline
+	url = git@github.com:abo-abo/zoutline
+[submodule "git/auto-complete"]
+	path = git/auto-complete
+	url = git@github.com:auto-complete/auto-complete
+[submodule "git/popup-el"]
+	path = git/popup-el
+	url = git@github.com:auto-complete/popup-el

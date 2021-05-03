@@ -5,7 +5,7 @@
 
 (require 'lpy)
 
-(set-default python-shell-interpreter "python3")
+(setq-default python-shell-interpreter "python3")
 ;; python-shell-first-prompt-hook
 (csetq python-indent-guess-indent-offset nil)
 (defvar cd-no-pip
@@ -31,7 +31,7 @@
   (unless cd-no-pip
     (require 'jedi)
     (setq jedi:environment-root "jedi")
-    (setq jedi:environment-virtualenv python-enviroenment-virtualenv)
+    (setq jedi:environment-virtualenv python-environment-virtualenv)
     (add-to-list 'company-backends 'company-jedi))
   (electric-indent-mode -1)
   (auto-complete-mode -1)
