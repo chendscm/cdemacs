@@ -81,4 +81,5 @@
 
 ;;* tmp put here
 (require 'cd-eaf)
+(require 'cd-chinese)
 ;; (require 'cd-python)
