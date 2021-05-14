@@ -14,6 +14,13 @@
 
 ;;;***
 
+;;;### (autoloads nil "modes/cd-eaf" "modes/cd-eaf.el" (0 0 0 0))
+;;; Generated autoloads from modes/cd-eaf.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-eaf" '("cd-eaf-hook")))
+
+;;;***
+
 ;;;### (autoloads nil "modes/cd-elisp" "modes/cd-elisp.el" (0 0 0
 ;;;;;;  0))
 ;;; Generated autoloads from modes/cd-elisp.el
@@ -76,8 +83,9 @@ Threat is as function body when from endline before )" t nil)
 
 ;;;***
 
-;;;### (autoloads nil nil ("hooks.el" "modes/cd-avy.el" "modes/cd-hydra.el"
-;;;;;;  "modes/cd-ivy.el" "modes/cd-visuals.el") (0 0 0 0))
+;;;### (autoloads nil nil ("hooks.el" "modes/cd-avy.el" "modes/cd-chinese.el"
+;;;;;;  "modes/cd-hydra.el" "modes/cd-ivy.el" "modes/cd-visuals.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

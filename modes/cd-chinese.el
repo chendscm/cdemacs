@@ -1,3 +1,4 @@
+;;* {{ pyim
 (require 'pyim)
 (require 'pyim-basedict)
 (pyim-basedict-enable)
@@ -17,6 +18,8 @@
 
   ;; don't use tooltip
   (setq pyim-use-tooltip 'popup))
+;; }}
+
 
 
 (provide 'cd-chinese)

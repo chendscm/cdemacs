@@ -82,4 +82,8 @@
 ;;* tmp put here
 (require 'cd-eaf)
 (require 'cd-chinese)
-;; (require 'cd-python)
+(require 'cd-python)
+(require 'cd-misc)
+
+;; tmp add, for solve nesting exceeds (max-lisp-eval-depth)
+(max-specpdl-size)

@@ -16,10 +16,12 @@
 (defhydra hydra-dao (global-map ",")
   "Dao"
   ("," cd-comma "comma" :exit t)
+  ("db" sdcv-search-input "sdcv-input" :exit t)
+  ("dt" sdcv-search-input+ "sdcv-input+" :exit t)
   ("xb" cd-save-and-switch-buffer "switch-buffer" :exit t)
   ("xf" counsel-find-file "find-file" :exit t)
   ("xk" kill-buffer "kill-buffer" :exit t)
-  ("xs" kill-buffer "save-buffer" :exit t)
+  ("xs" save-buffer "save-buffer" :exit t)
   ("xo" ace-window "ace-window" :exit t))
 
 (provide 'keys)
