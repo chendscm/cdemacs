@@ -73,6 +73,13 @@ Threat is as function body when from endline before )" t nil)
 
 ;;;***
 
+;;;### (autoloads nil "modes/cd-org" "modes/cd-org.el" (0 0 0 0))
+;;; Generated autoloads from modes/cd-org.el
+
+(autoload 'cd-org-latex-impatient-hook "modes/cd-org" nil nil nil)
+
+;;;***
+
 ;;;### (autoloads nil "modes/cd-python" "modes/cd-python.el" (0 0
 ;;;;;;  0 0))
 ;;; Generated autoloads from modes/cd-python.el
@@ -84,8 +91,8 @@ Threat is as function body when from endline before )" t nil)
 ;;;***
 
 ;;;### (autoloads nil nil ("hooks.el" "modes/cd-avy.el" "modes/cd-chinese.el"
-;;;;;;  "modes/cd-hydra.el" "modes/cd-ivy.el" "modes/cd-visuals.el")
-;;;;;;  (0 0 0 0))
+;;;;;;  "modes/cd-hydra.el" "modes/cd-ivy.el" "modes/cd-misc.el"
+;;;;;;  "modes/cd-visuals.el") (0 0 0 0))
 
 ;;;***
 

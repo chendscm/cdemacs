@@ -79,3 +79,9 @@
 [submodule "git/posframe"]
 	path = git/posframe
 	url = git@github.com:tumashu/posframe
+[submodule "git/names"]
+	path = git/names
+	url = git@github.com:Malabarba/names
+[submodule "git/org-latex-impatient"]
+	path = git/org-latex-impatient
+	url = git@github.com:yangsheng6810/org-latex-impatient
