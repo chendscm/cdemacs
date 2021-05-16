@@ -3,7 +3,7 @@
 ;;;### (autoloads nil "init" "init.el" (0 0 0 0))
 ;;; Generated autoloads from init.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '("csetq" "emacs-d" "yes-or-no-p")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '("cd-advice-add" "csetq" "emacs-d" "yes-or-no-p")))
 
 ;;;***
 
@@ -11,6 +11,14 @@
 ;;; Generated autoloads from keys.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "keys" '("hydra-dao")))
+
+;;;***
+
+;;;### (autoloads nil "modes/cd-company" "modes/cd-company.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from modes/cd-company.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-company" '("cd-")))
 
 ;;;***
 
@@ -27,6 +35,8 @@
 
 (autoload 'cd-emacs-lisp-hook "modes/cd-elisp" nil nil nil)
 
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-elisp" '("cd-" "conditionally-enable-lispy" "eldoc-mode" "lisp--match-hidden-arg")))
+
 ;;;***
 
 ;;;### (autoloads nil "modes/cd-eshell" "modes/cd-eshell.el" (0 0
@@ -37,6 +47,18 @@
 
 (autoload 'eshell-this-dir "modes/cd-eshell" "\
 Open or move eshell in `default-directory'." t nil)
+
+;;;***
+
+;;;### (autoloads nil "modes/cd-flyspell" "modes/cd-flyspell.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from modes/cd-flyspell.el
+
+(autoload 'cd-flyspell-previous-word "modes/cd-flyspell" "\
+Correct the first misspelled word that occurs before point.
+But don't look beyond what's visible on the screen." t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-flyspell" '("cd-make-flyspell-overlay-return-mouse-stuff" "flyspell-ignore-http-and-https")))
 
 ;;;***
 
@@ -101,9 +123,10 @@ Threat is as function body when from endline before )" t nil)
 
 ;;;***
 
-;;;### (autoloads nil nil ("hooks.el" "modes/cd-avy.el" "modes/cd-chinese.el"
-;;;;;;  "modes/cd-hydra.el" "modes/cd-ivy.el" "modes/cd-misc.el"
-;;;;;;  "modes/cd-visuals.el") (0 0 0 0))
+;;;### (autoloads nil nil ("hooks.el" "modes/cd-auto.el" "modes/cd-avy.el"
+;;;;;;  "modes/cd-chinese.el" "modes/cd-elisp-style-guide.el" "modes/cd-hydra.el"
+;;;;;;  "modes/cd-ivy.el" "modes/cd-misc.el" "modes/cd-visuals.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 
@@ -121,5 +144,10 @@ Threat is as function body when from endline before )" t nil)
 
 
 \(fn &optional ARG)" t nil)
+
+(autoload 'cd-fontify-glyph "auto" "\
+
+
+\(fn ITEM GLYPH)" nil nil)
 
 ;;;***

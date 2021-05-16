@@ -103,3 +103,45 @@
 [submodule "git/auto-yasnippet"]
 	path = git/auto-yasnippet
 	url = git@github.com:abo-abo/auto-yasnippet
+[submodule "git/powerline"]
+	path = git/powerline
+	url = git@github.com:milkypostman/powerline
+[submodule "git/helm-j-cheatsheet"]
+	path = git/helm-j-cheatsheet
+	url = git@github.com:abo-abo/helm-j-cheatsheet
+[submodule "git/helm"]
+	path = git/helm
+	url = git@github.com:emacs-helm/helm
+[submodule "git/async"]
+	path = git/async
+	url = git@github.com:jwiegley/emacs-async
+[submodule "git/pamparam"]
+	path = git/pamparam
+	url = git@github.com:abo-abo/pamparam
+[submodule "git/worf"]
+	path = git/worf
+	url = git@github.com:abo-abo/worf
+[submodule "git/ace-link"]
+	path = git/ace-link
+	url = git@github.com:abo-abo/ace-link
+[submodule "git/helm-make"]
+	path = git/helm-make
+	url = git@github.com:abo-abo/helm-make
+[submodule "git/projectile"]
+	path = git/projectile
+	url = git@github.com:bbatsov/projectile
+[submodule "git/find-file-in-project"]
+	path = git/find-file-in-project
+	url = git@github.com:redguardtoo/find-file-in-project
+[submodule "git/magit"]
+	path = git/magit
+	url = git@github.com:magit/magit
+[submodule "git/transient"]
+	path = git/transient
+	url = git@github.com:magit/transient
+[submodule "git/with-editor"]
+	path = git/with-editor
+	url = git@github.com:magit/with-editor
+[submodule "git/htmlize"]
+	path = git/htmlize
+	url = git@github.com:abo-abo/htmlize

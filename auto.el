@@ -29,6 +29,8 @@
 	    '("" "modes"))
     (update-directory-autoloads "")))
 
+;;* Launchers 
+
 ;;* Utility
 ;;;###autoload
 (defun cd-save-and-switch-buffer (&optional arg)
@@ -42,3 +44,12 @@
         (call-interactively #'magit-status))
     (unless (window-minibuffer-p)
       (ivy-switch-buffer))))
+
+;;;###autoload
+(defun cd-fontify-glyph (item glyph)
+  `((,item)
+    (0 font-lock-keyword-face t)
+    (0 (prog1
+           (compose-region (match-beginning 0)
+                           (match-end 0)
+                           ,glyph) nil))))

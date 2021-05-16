@@ -4,6 +4,8 @@
   (file-name-directory
    (file-chase-links load-file-name))
   "The giant turtle on which the world rests.")
+(setq cd-startup-time-tic (current-time))
+(setq byte-compile-warnings '(cl-functions))
 (let ((emacs-git (expand-file-name "git/" emacs-d)))
   (mapc (lambda (x)
 	  (add-to-list 'load-path (expand-file-name x emacs-git)))
@@ -137,7 +139,6 @@
 ;; }}
 (require 'cd-company)
 ;;** keys
-(require 'cd-hydra)
 (require 'keys)
 ;;**appearance
 (when (image-type-available-p 'xpm)
@@ -148,9 +149,95 @@
   (when (display-graphic-p)
     (powerline-default-theme)
     (remove-hook 'focus-out-hook 'powerline-unset-selected-window)))
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "/")
+(setq uniquify-ignore-buffers-re "^\\*")
 ;;** rest
 (require 'cd-avy)
+(require 'cd-hydra)
 (require 'hooks)
+(require 'cd-elisp)
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (lispy-flet (process-list ()) ad-do-it))
+(setq confirm-kill-processes nil)
+(defadvice custom-theme-load-confirm (around no-query-safe-thme activate)
+  t)
+;; {{ dired
+(require 'dired)
+(setq dired-listing-switches
+      (if (memq system-type '(windows-nt darwin))
+          "-alh"
+        "-laGh1v --group-directories-first"))
+;; }}
+(require 'helm-j-cheatsheet)
+(require 'pamparam)
+;; {{ helm-make
+(require 'helm-make)
+(setq helm-make-completion-method 'ivy)
+;; }}
+;; {{ flyspell
+(require 'flyspell)
+(require 'cd-flyspell)
+;; }}
+;; {{ projectile
+(require 'projectile)
+(diminish projectile-mode)
+(setq projectile-mode nil)
+(projectile-global-mode)
+(setq projectile-project-root-files-bottom-up
+      '(".git" ".projectile"))
+(setq projectile-completion-system 'ivy)
+(setq projectile-indexing-method 'alien)
+(setq projectile-enable-caching nil)
+(setq projectile-verbose nil)
+(setq projectile-do-log nil)
+(setq projectile-switch-project-action
+      (lambda ()
+        (dired (projectile-project-root))))
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;; }}
+(require 'find-file-in-project)
+;; {{ magit
+(add-to-list 'load-path (expand-file-name "git/magit/lisp" emacs-d))
+(add-to-list 'load-path (expand-file-name "git/transient/lisp" emacs-d))
+(require 'magit)
+(ignore-errors
+  (diminish 'magit-auto-revert-mode))
+(setq magit-completing-read-function 'ivy-completing-read)
+(setq magit-item-highlight-face 'bold)
+(setq magit-repo-dirs-depth 1)
+(setq magit-repo-dirs
+      (mapcar
+       (lambda (dir)
+         (substring dir 0 -1))
+       (cl-remove-if-not
+        (lambda (project)
+          (unless (file-remote-p project)
+            (file-directory-p (concat project "/.git/"))))
+        (projectile-relevant-known-projects))))
+;; }}
+;; {{ compile
+(require 'compile)
+(diminish compilation-in-progress)
+(setq compilation-ask-about-save nil)
+(assq-delete-all 'compilation-in-progress mode-line-modes)
+;; }}
+(require 'htmlize)
+(lispy-mode)
+;; (unless (bound-and-true-p cd-barebones)
+;;   (run-with-idle-timer
+;;    3 nil
+;;    (lambda () (require 'cd-org))))
+(add-to-list 'warnings-suppress-types '(undo discard-info))
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+(cd-advice-add 'semantic-idle-scheduler-function :around #'ignore)
+(require 'server)
+(setq cd-startup-time-tic (current-time))
+(or (server-running-p) (server-start))
+(setq cd-startup-time-seconds
+      (time-to-seconds (time-subtract cd-startup-time-toc cd-startup-time-tic)))
 
 ;;* tmp put here
 (require 'cd-eaf)
