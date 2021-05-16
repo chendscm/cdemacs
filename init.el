@@ -1,9 +1,10 @@
 ;;; oremacs
 ;;* Base direcotry and load-path
-(defvar emacs-d
-  (file-name-directory
-   (file-chase-links load-file-name))
-  "The giant turtle on which the world rests.")
+;; (defvar emacs-d
+;;   (file-name-directory
+;;    (file-chase-links load-file-name))
+;;   "The giant turtle on which the world rests.")
+(setq emacs-d "~/git/s/cdemacs/")
 (setq cd-startup-time-tic (current-time))
 (setq byte-compile-warnings '(cl-functions))
 (let ((emacs-git (expand-file-name "git/" emacs-d)))
@@ -139,6 +140,7 @@
 ;; }}
 (require 'cd-company)
 ;;** keys
+(require 'cd-hydra)
 (require 'keys)
 ;;**appearance
 (when (image-type-available-p 'xpm)
@@ -155,7 +157,6 @@
 (setq uniquify-ignore-buffers-re "^\\*")
 ;;** rest
 (require 'cd-avy)
-(require 'cd-hydra)
 (require 'hooks)
 (require 'cd-elisp)
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
@@ -230,11 +231,11 @@
 ;;   (run-with-idle-timer
 ;;    3 nil
 ;;    (lambda () (require 'cd-org))))
-(add-to-list 'warnings-suppress-types '(undo discard-info))
+(add-to-list 'warning-suppress-types '(undo discard-info))
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 (cd-advice-add 'semantic-idle-scheduler-function :around #'ignore)
 (require 'server)
-(setq cd-startup-time-tic (current-time))
+(setq cd-startup-time-toc (current-time))
 (or (server-running-p) (server-start))
 (setq cd-startup-time-seconds
       (time-to-seconds (time-subtract cd-startup-time-toc cd-startup-time-tic)))
