@@ -103,6 +103,3 @@
 [submodule "git/auto-yasnippet"]
 	path = git/auto-yasnippet
 	url = git@github.com:abo-abo/auto-yasnippet
-[submodule "git/powerline"]
-	path = git/powerline
-	url = git@github.com:abo-abo/powerline
