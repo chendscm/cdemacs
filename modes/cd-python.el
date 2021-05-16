@@ -3,8 +3,6 @@
 (require 'python-environment)
 (require 'company-jedi)
 
-(require 'lpy)
-
 (setq-default python-shell-interpreter "python3")
 ;; python-shell-first-prompt-hook
 (csetq python-indent-guess-indent-offset nil)
@@ -12,8 +10,36 @@
   (string-match "Command not found\\|no pip in"
                 (shell-command-to-string "which pip")))
 
+(unless cd-no-pip
+    (require 'jedi)
+    (define-key jedi-mode-map [C-tab] nil)
+    (setq jedi:use-shortcuts nil)
+    (setq jedi:complete-on-dot nil)
+    (setq jedi:setup-function nil)
+    (setq jedi:mode-function nil)
+    (setcar jedi:install-server--command "pip3")
+    (setq jedi:server-command (list "python3" jedi:server-script)))
+(require 'ciao nil t)
+
+(require 'lpy)
+(setq python-shell-prompt-detect-enable nil)
+(require 'warnings)
+(add-to-list 'warning-suppress-log-types
+             '(python python-shell-completion-native-turn-on-maybe))
+(setq python-shell-prompt-detect-failure-warning nil)
+;; when set to nil, completions to functions end with "(", very annoying
+(setq python-shell-completion-native-enable t)
+(define-key python-mode-map (kbd "C-.") nil)
+(define-key python-mode-map (kbd "C-x C-p") 'jedi:goto-definition)
+(define-key python-mode-map (kbd "C-?") 'jedi:show-doc)
 (define-key python-mode-map (kbd "RET") 'newline-and-indent)
+(define-key python-mode-map (kbd "θ") 'lpy-quotes)
+(define-key python-mode-map (kbd "β") 'counsel-jedi)
+(define-key python-mode-map (kbd "C-M-j") 'lpy-goto)
+(define-key python-mode-map (kbd "C-c C-v") nil)
+(define-key python-mode-map (kbd "C-c C-r") nil)
 (define-key python-mode-map (kbd "C-m") 'python-newline-dedent)
+(define-key inferior-python-mode-map (kbd "C-c M-o") 'comint-clear-buffer)
 
 (defun python-newline-dedent ()
   (interactive)
@@ -21,7 +47,12 @@
       (newline)
     (newline-and-indent)
     (unless (or (bolp)
-                (lispy--in-string-p)))))
+                (lispy--in-string-p))
+       (python-indent-dedent-line-backspace 1))))
+
+(require 'le-python)
+(require 'flyspell)
+(flyspell-delay-command 'python-indent-dedent-line-backspace)
 
 ;;;###autoload
 (defun cd-python-hook ()
@@ -29,7 +60,7 @@
   (setq python-environment-virtualenv
         '("virtualenv" "--system-site-packages" "--quite" "--python" "/usr/bin/python3"))
   (unless cd-no-pip
-    (require 'jedi)
+    (jedi:setup)
     (setq jedi:environment-root "jedi")
     (setq jedi:environment-virtualenv python-environment-virtualenv)
     (add-to-list 'company-backends 'company-jedi))

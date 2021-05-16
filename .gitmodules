@@ -85,3 +85,24 @@
 [submodule "git/org-latex-impatient"]
 	path = git/org-latex-impatient
 	url = git@github.com:yangsheng6810/org-latex-impatient
+[submodule "git/whicher"]
+	path = git/whicher
+	url = git@github.com:abo-abo/whicher
+[submodule "git/smex"]
+	path = git/smex
+	url = git@github.com:abo-abo/smex
+[submodule "git/diminish"]
+	path = git/diminish
+	url = git@github.com:myrjola/diminish.el
+[submodule "git/tiny"]
+	path = git/tiny
+	url = git@github.com:abo-abo/tiny
+[submodule "git/yasnippet"]
+	path = git/yasnippet
+	url = git@github.com:joaotavora/yasnippet
+[submodule "git/auto-yasnippet"]
+	path = git/auto-yasnippet
+	url = git@github.com:abo-abo/auto-yasnippet
+[submodule "git/powerline"]
+	path = git/powerline
+	url = git@github.com:abo-abo/powerline

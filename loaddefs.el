@@ -29,6 +29,17 @@
 
 ;;;***
 
+;;;### (autoloads nil "modes/cd-eshell" "modes/cd-eshell.el" (0 0
+;;;;;;  0 0))
+;;; Generated autoloads from modes/cd-eshell.el
+
+(autoload 'cd-eshell-hook "modes/cd-eshell" nil nil nil)
+
+(autoload 'eshell-this-dir "modes/cd-eshell" "\
+Open or move eshell in `default-directory'." t nil)
+
+;;;***
+
 ;;;### (autoloads nil "modes/cd-fonts" "modes/cd-fonts.el" (0 0 0
 ;;;;;;  0))
 ;;; Generated autoloads from modes/cd-fonts.el
@@ -99,13 +110,16 @@ Threat is as function body when from endline before )" t nil)
 ;;;### (autoloads nil "auto" "auto.el" (0 0 0 0))
 ;;; Generated autoloads from auto.el
 
+(autoload 'cd-c-forward-sexp-function "auto" "\
+
+
+\(fn ARG)" nil nil)
+
 (autoload 'update-all-autoloads "auto" nil t nil)
 
 (autoload 'cd-save-and-switch-buffer "auto" "\
 
 
 \(fn &optional ARG)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "auto" '("cd-c-forward-sexp-function")))
 
 ;;;***

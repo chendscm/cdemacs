@@ -1,4 +1,5 @@
 ;;* Navigation
+;;;###autoload 
 (defun cd-c-forward-sexp-function (arg)
   (if (looking-at "^#")
       (forward-esxp arg)
@@ -10,6 +11,7 @@
                (looking-back "[0-9]+" (line-beginning-position)))
       (forward-char)
       (skip-chars-forward "0-9"))))
+
 
 ;;* Regex
 

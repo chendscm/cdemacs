@@ -17,9 +17,11 @@
   (setq pyim-default-scheme 'quanpin)
 
   ;; don't use tooltip
-  (setq pyim-use-tooltip 'popup))
+  ;; (if (posframe-workable-p)
+  ;;     (setq pyim-page-tooltip 'posframe)
+  ;;   (setq pyim-page-tooltip 'popup))
+  (setq pyim-page-tooltip 'popup))
 ;; }}
-
 
 
 (provide 'cd-chinese)
