@@ -2,7 +2,14 @@
 (require 'autoinsert)
 (require 'python-environment)
 (require 'company-jedi)
-
+(add-to-list 'auto-insert-alist
+             '(python-mode lambda nil (cd-python-auto-insert)))
+(defun cd-python-auto-insert ()
+  (insert "#* Imports\n\n\n")
+  (if (string= "Cookbook.py" (file-name-nondirectory (buffer-file-name)))
+      (insert "#* Recipes")
+    (insert "#* Script"))
+  (insert "\n"))
 (setq-default python-shell-interpreter "python3")
 ;; python-shell-first-prompt-hook
 (csetq python-indent-guess-indent-offset nil)
@@ -11,18 +18,17 @@
                 (shell-command-to-string "which pip")))
 
 (unless cd-no-pip
-    (require 'jedi)
-    (define-key jedi-mode-map [C-tab] nil)
-    (setq jedi:use-shortcuts nil)
-    (setq jedi:complete-on-dot nil)
-    (setq jedi:setup-function nil)
-    (setq jedi:mode-function nil)
-    (setcar jedi:install-server--command "pip3")
-    (setq jedi:server-command (list "python3" jedi:server-script)))
+  (define-key jedi-mode-map [C-tab] nil)
+  (setq jedi:use-shortcuts nil)
+  (setq jedi:complete-on-dot nil)
+  (setq jedi:setup-function nil)
+  (setq jedi:mode-function nil)
+  (setcar jedi:install-server--command "pip3")
+  (setq jedi:server-command (list "python3" jedi:server-script)))
 (require 'ciao nil t)
 
 (require 'lpy)
-(setq python-shell-prompt-detect-enable nil)
+(setq python-shell-prompt-detect-enabled nil)
 (require 'warnings)
 (add-to-list 'warning-suppress-log-types
              '(python python-shell-completion-native-turn-on-maybe))
@@ -48,17 +54,17 @@
     (newline-and-indent)
     (unless (or (bolp)
                 (lispy--in-string-p))
-       (python-indent-dedent-line-backspace 1))))
+      (python-indent-dedent-line-backspace 1))))
 
 (require 'le-python)
 (require 'flyspell)
 (flyspell-delay-command 'python-indent-dedent-line-backspace)
 
-;;;###autoload
+;; ;;;###autoload
 (defun cd-python-hook ()
   (setq-local company-backends '(company-dabbrev-code company-keywords))
   (setq python-environment-virtualenv
-        '("virtualenv" "--system-site-packages" "--quite" "--python" "/usr/bin/python3"))
+        '("virtualenv" "--system-site-packages" "--quiet" "--python" "/usr/bin/python3"))
   (unless cd-no-pip
     (jedi:setup)
     (setq jedi:environment-root "jedi")
@@ -72,9 +78,64 @@
   (setq forward-sexp-function 'cd-c-forward-sexp-function)
   (lpy-mode)
   (setq completion-at-point-functions '(lispy-python-completion-at-point t))
-  (setf (symbol-function #'jedi:handle-post-command) (lambda nil nil)))
+  (setf (symbol-function #'jedi:handle-post-command) (lambda nil nil))
+  )
 
-;;;##autoload
+(defun cd-get-py-fname ()
+  "Get the file name of a visibile `python-mode' buffer."
+  (let ((b (window-buffer
+            (cl-find-if (lambda (w)
+                          (with-current-buffer (window-buffer w)
+                            (eq major-mode 'python-mode)))
+                        (window-list)))))
+    (if b
+        (file-name-nondirectory
+         (buffer-file-name b))
+      "")))
+
+(defun cd-python-shell-send-region (start end &optional nomain)
+  "Send the region delimited by START and END to inferior Python process."
+  (interactive "r")
+  (let* ((python--use-fake-loc
+          (not buffer-file-name))
+         (string (python-shell-buffer-substring start end nomain))
+         (process (python-shell-get-or-create-process))
+         (_ (string-match "\\`\n*\\(.*\\)" string)))
+    (let* ((temp-file-name (python-shell--save-temp-file string))
+           (file-name (or (buffer-file-name) temp-file-name)))
+      (python-shell-send-file file-name process temp-file-name t)
+      (unless python--use-fake-loc
+        (with-current-buffer (process-buffer process)
+          (compilation-fake-loc (copy-marker start) temp-file-name
+                                2))))))
+
+;;* Jython stuff
+(setq python-shell-completion-setup-code
+      "
+def __PYTHON_EL_get_completions(text):
+    import readline
+    comps = []
+    completer = readline.get_completer()
+    try:
+        if getattr(completer, 'PYTHON_EL_WRAPPED', False):
+            completer.print_mode = False
+        i = 0
+        while True:
+            completion = completer(text, i)
+            if not completion:
+                break
+            i += 1
+            comps.append(completion)
+    finally:
+        if getattr(completer, 'PYTHON_EL_WRAPPED', False):
+            completer.print_mode = True
+    comps.remove('0__dummy_completion__')
+    comps.remove('1__dummy_completion__')
+    seen = set()
+    seen_add = seen.add
+    return [x for x in comps if not (x in seen or seen_add(x))]")
+
+;;;###autoload
 (defun cd-inferior-python-hook ()
   (setq next-error-function 'cd-comint-next-error-function))
 
@@ -95,6 +156,13 @@
     (back-to-indentation)
     (unless (bolp)
       (backward-char))))
+
+(defun python-font-lock-syntactic-face-function (state)
+  "Speed up `python-font-lock-syntactic-face-function'.
+Don't call `python-info-docstring-p'."
+  (if (nth 3 state)
+      font-lock-string-face
+    font-lock-comment-face))
 
 (provide 'cd-python)
 

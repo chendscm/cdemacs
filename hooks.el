@@ -7,3 +7,4 @@
 (add-hook 'org-mode-hook 'cd-org-latex-impatient-hook)
 
 (provide 'hooks)
+

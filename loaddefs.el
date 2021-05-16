@@ -3,7 +3,7 @@
 ;;;### (autoloads nil "init" "init.el" (0 0 0 0))
 ;;; Generated autoloads from init.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '("cd-advice-add" "csetq" "emacs-d" "yes-or-no-p")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '("cd-advice-add" "csetq" "yes-or-no-p")))
 
 ;;;***
 
@@ -117,9 +117,9 @@ Threat is as function body when from endline before )" t nil)
 ;;;;;;  0 0))
 ;;; Generated autoloads from modes/cd-python.el
 
-(autoload 'cd-python-hook "modes/cd-python" nil nil nil)
+(autoload 'cd-inferior-python-hook "modes/cd-python" nil nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-python" '("cd-" "python-newline-dedent")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-python" '("cd-" "python-")))
 
 ;;;***
 
