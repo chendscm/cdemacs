@@ -4,7 +4,10 @@
 ;;   (file-name-directory
 ;;    (file-chase-links load-file-name))
 ;;   "The giant turtle on which the world rests.")
-(setq emacs-d "~/git/s/cdemacs/")
+(defvar emacs-d
+  (file-name-directory
+   (or load-file-name (buffer-file-name))))
+;; (setq emacs-d "~/git/s/cdemacs/")
 (setq cd-startup-time-tic (current-time))
 (setq byte-compile-warnings '(cl-functions))
 (let ((emacs-git (expand-file-name "git/" emacs-d)))

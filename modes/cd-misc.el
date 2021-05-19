@@ -8,10 +8,11 @@
 (setq sdcv-dictionary-data-dir ;; setup directory of stardict dictionary
       (concat emacs-d "sdcv-dict"))
 (setq sdcv-dictionary-simple-list ;; setup dictionary list for simple search
-      '("郎道英汉字典5.0"))
+      '("朗道英汉字典5.0"))
 (setq sdcv-dictionary-complete-list ;; setup dictionary list for complete search
       '("WordNet"))
 (setq sdcv-tooltip-timeout 60)
 ;; }}
 
 (provide 'cd-misc)
+

@@ -50,6 +50,17 @@ Open or move eshell in `default-directory'." t nil)
 
 ;;;***
 
+;;;### (autoloads nil "modes/cd-eww" "modes/cd-eww.el" (0 0 0 0))
+;;; Generated autoloads from modes/cd-eww.el
+
+(autoload 'cd-eww-hook "modes/cd-eww" nil nil nil)
+
+(autoload 'cd-eww-reader "modes/cd-eww" nil t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-eww" '("cd-" "eww-view-ace")))
+
+;;;***
+
 ;;;### (autoloads nil "modes/cd-flyspell" "modes/cd-flyspell.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from modes/cd-flyspell.el
