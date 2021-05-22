@@ -9,12 +9,18 @@
    (or load-file-name (buffer-file-name))))
 (setq cd-startup-time-tic (current-time))
 (setq byte-compile-warnings '(cl-functions))
-(let ((emacs-git (expand-file-name "git/" emacs-d)))
-  (mapc (lambda (x)
-	  (add-to-list 'load-path (expand-file-name x emacs-git)))
-	(delete "." (delete ".." (directory-files emacs-git)))))
-(add-to-list 'load-path emacs-d)
-(add-to-list 'load-path (expand-file-name "modes/" emacs-d))
+;; (let ((emacs-git (expand-file-name "git/" emacs-d)))
+;;   (mapc (lambda (x)
+;; 	  (add-to-list 'load-path (expand-file-name x emacs-git)))
+;; 	(delete "." (delete ".." (directory-files emacs-git)))))
+;; (add-to-list 'load-path emacs-d)
+;; (add-to-list 'load-path (expand-file-name "modes/" emacs-d))
+(defun cd-add-subdirs (dir)
+  "Recursive add directories to `load-path'."
+  (let ((default-directory (file-name-as-directory dir)))
+    (add-to-list 'load-path dir)
+    (normal-top-level-add-subdirs-to-load-path)))
+(cd-add-subdirs emacs-d)
 (setq enable-local-variables :all)
 
 (defmacro csetq (variable value)
@@ -204,8 +210,6 @@
 ;; }}
 (require 'find-file-in-project)
 ;; {{ magit
-(add-to-list 'load-path (expand-file-name "git/magit/lisp" emacs-d))
-(add-to-list 'load-path (expand-file-name "git/transient/lisp" emacs-d))
 (require 'magit)
 (ignore-errors
   (diminish 'magit-auto-revert-mode))

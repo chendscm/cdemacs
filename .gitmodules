@@ -145,3 +145,6 @@
 [submodule "git/htmlize"]
 	path = git/htmlize
 	url = git@github.com:abo-abo/htmlize
+[submodule "git/geiser"]
+	path = git/geiser
+	url = git@github.com:emacsmirror/geiser
