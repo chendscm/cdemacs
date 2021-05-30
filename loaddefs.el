@@ -3,7 +3,7 @@
 ;;;### (autoloads nil "init" "init.el" (0 0 0 0))
 ;;; Generated autoloads from init.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '("cd-advice-add" "csetq" "emacs-d" "yes-or-no-p")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '("cd-ad" "csetq" "emacs-d" "yes-or-no-p")))
 
 ;;;***
 
@@ -121,6 +121,14 @@ Threat is as function body when from endline before )" t nil)
 ;;; Generated autoloads from modes/cd-org.el
 
 (autoload 'cd-org-latex-impatient-hook "modes/cd-org" nil nil nil)
+
+;;;***
+
+;;;### (autoloads nil "modes/cd-pdf-view" "modes/cd-pdf-view.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from modes/cd-pdf-view.el
+
+(autoload 'cd-pdf-view-hook "modes/cd-pdf-view" nil nil nil)
 
 ;;;***
 

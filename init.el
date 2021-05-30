@@ -248,7 +248,7 @@
       (time-to-seconds (time-subtract cd-startup-time-toc cd-startup-time-tic)))
 
 ;;* tmp put here
-(require 'cd-eaf)
+;; (require 'cd-eaf)
 (require 'cd-chinese)
 (require 'cd-python)
 (require 'cd-misc)
