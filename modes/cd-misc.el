@@ -10,7 +10,9 @@
 (setq sdcv-dictionary-simple-list ;; setup dictionary list for simple search
       '("朗道英汉字典5.0"))
 (setq sdcv-dictionary-complete-list ;; setup dictionary list for complete search
-      '("WordNet"))
+      '("朗道英汉字典5.0"
+        ;; "WordNet"
+        ))
 (setq sdcv-tooltip-timeout 60)
 ;; }}
 
