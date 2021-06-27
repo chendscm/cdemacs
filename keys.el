@@ -37,12 +37,32 @@
 (defhydra hydra-dao (global-map ",")
   "Dao"
   ("," cd-comma "comma" :exit t)
+  ("." hydra-normal/body "normal" :exit t)
+  ;; ("." cd-dot "dot" :exit t)
+  
   ("db" sdcv-search-input "sdcv-input" :exit t)
   ("dt" sdcv-search-input+ "sdcv-input+" :exit t)
-  ("xb" cd-save-and-switch-buffer "switch-buffer" :exit t)
+  
+  ("bh" cd-save-and-switch-buffer "switch-buffer" :exit t)
+  
   ("xf" counsel-find-file "find-file" :exit t)
   ("xk" kill-buffer "kill-buffer" :exit t)
   ("xs" save-buffer "save-buffer" :exit t)
   ("xo" ace-window "ace-window" :exit t))
+
+(defhydra hydra-normal (:pre (set-cursor-color "#40e0d0")
+                        :post (set-cursor-color "#ffffff"))
+  "Normal mode"
+  ("l" forward-char)
+  ("h" backward-char)
+  ("j" next-line)
+  ("k" previous-line)
+  ("i" nil nil)
+  ("m" set-mark-command "mark")
+  ("a" move-beginning-of-line "beg")
+  ("e" move-end-of-line "end")
+  ("x" delete-char "del-char")
+  ("y" kill-ring-save "yank" :color blue)
+  ("q" nil nil))
 
 (provide 'keys)

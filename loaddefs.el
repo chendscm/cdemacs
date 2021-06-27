@@ -10,7 +10,7 @@
 ;;;### (autoloads nil "keys" "keys.el" (0 0 0 0))
 ;;; Generated autoloads from keys.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "keys" '("hydra-dao")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "keys" '("hydra-")))
 
 ;;;***
 
@@ -113,6 +113,8 @@ Threat is as function body when from endline before )" t nil)
 
 (autoload 'cd-comma "modes/cd-insert" nil t nil)
 
+(autoload 'cd-dot "modes/cd-insert" nil t nil)
+
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-insert" '("cd-self-insert")))
 
 ;;;***
@@ -154,8 +156,7 @@ Threat is as function body when from endline before )" t nil)
 
 ;;;### (autoloads nil nil ("hooks.el" "modes/cd-auto.el" "modes/cd-avy.el"
 ;;;;;;  "modes/cd-chinese.el" "modes/cd-elisp-style-guide.el" "modes/cd-hydra.el"
-;;;;;;  "modes/cd-ivy.el" "modes/cd-misc.el" "modes/cd-visuals.el")
-;;;;;;  (0 0 0 0))
+;;;;;;  "modes/cd-ivy.el" "modes/cd-visuals.el") (0 0 0 0))
 
 ;;;***
 

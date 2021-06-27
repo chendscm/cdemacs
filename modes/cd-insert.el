@@ -172,6 +172,14 @@ Take care of nested C++ templates."
         (t
          (insert ","))))
 
+;;;###autoload
+(defun cd-dot ()
+  (interactive)
+  (cond ((region-active-p)
+         (lispy--surround-region "." "."))
+        (t
+         (insert "."))))
+
 ;;* Self-insert
 (defun cd-self-insert ()
   (interactive)
