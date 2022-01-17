@@ -154,3 +154,6 @@
 [submodule "git/aweshell"]
 	path = git/aweshell
 	url = git@github.com:manateelazycat/aweshell
+[submodule "git/emacs-application-framework"]
+	path = git/emacs-application-framework
+	url = git@github.com:emacs-eaf/emacs-application-framework.git
