@@ -1,5 +1,9 @@
 (require 'eaf)
 
+;; app
+(require 'eaf-browser)
+(require 'eaf-pdf-viewer)
+
 ;; browser
 (setq eaf-browser-continue-where-left-off t)
 (eaf-setq eaf-browser-enable-adblocker "true")
