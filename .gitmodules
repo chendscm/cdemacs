@@ -15,7 +15,7 @@
 	url = git@github.com:kiwanami/emacs-epc.git
 [submodule "git/eaf"]
 	path = git/eaf
-	url = git@github.com:manateelazycat/emacs-application-framework.git
+	url = git@github.com:emacs-eaf/emacs-application-framework.git
 [submodule "git/eclipse-theme"]
 	path = git/eclipse-theme
 	url = git@github.com:abo-abo/eclipse-theme.git
