@@ -250,9 +250,8 @@
 ;;* tmp put here
 (require 'cd-eaf)
 (require 'cd-chinese)
-(require 'cd-python)
 (require 'cd-misc)
-(require 'cd-org)
+;; (require 'cd-org)
 (require 'cd-aweshell)
 
 

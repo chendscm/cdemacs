@@ -157,4 +157,9 @@
 [submodule "git/emacs-application-framework"]
 	path = git/emacs-application-framework
 	url = git@github.com:emacs-eaf/emacs-application-framework.git
-
+[submodule "git/flycheck"]
+	path = git/flycheck
+	url = git@github.com:flycheck/flycheck.git
+[submodule "geiser-chez"]
+	path = geiser-chez
+	url = git@github.com:emacsmirror/geiser-chez

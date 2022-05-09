@@ -11,7 +11,7 @@
   (setq pyim-enable-shortcode nil)
 
   ;; use memory efficient pyim engine for pinyin ime
-  (setq pyim-dcache-backend 'pyim-dregcache)
+  ;; (setq pyim-dcache-backend 'pyim-dregcache)
 
   (setq default-input-method "pyim")
   (setq pyim-default-scheme 'quanpin)
@@ -20,7 +20,7 @@
   ;; (if (posframe-workable-p)
   ;;     (setq pyim-page-tooltip 'posframe)
   ;;   (setq pyim-page-tooltip 'popup))
-  (setq pyim-page-tooltip 'popup))
+  (setq pyim-page-tooltip 'posframe))
 ;; }}
 
 

@@ -65,4 +65,6 @@
   ("y" kill-ring-save "yank" :color blue)
   ("q" nil nil))
 
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+
 (provide 'keys)

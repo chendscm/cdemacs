@@ -3,7 +3,7 @@
 ;;;### (autoloads nil "init" "init.el" (0 0 0 0))
 ;;; Generated autoloads from init.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '("cd-ad" "csetq" "emacs-d" "yes-or-no-p")))
+(register-definition-prefixes "init" '("cd-ad" "csetq" "emacs-d" "yes-or-no-p"))
 
 ;;;***
 
@@ -138,9 +138,11 @@ Threat is as function body when from endline before )" t nil)
 ;;;;;;  0 0))
 ;;; Generated autoloads from modes/cd-python.el
 
+(autoload 'cd-python-hook "modes/cd-python" nil nil nil)
+
 (autoload 'cd-inferior-python-hook "modes/cd-python" nil nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-python" '("cd-" "python-")))
+(register-definition-prefixes "modes/cd-python" '("cd-" "python-"))
 
 ;;;***
 
@@ -150,13 +152,13 @@ Threat is as function body when from endline before )" t nil)
 
 (autoload 'cd-scheme-hook "modes/cd-scheme" nil nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "modes/cd-scheme" '("scheme-completion-at-point")))
+(register-definition-prefixes "modes/cd-scheme" '("scheme-completion-at-point"))
 
 ;;;***
 
 ;;;### (autoloads nil nil ("hooks.el" "modes/cd-auto.el" "modes/cd-avy.el"
 ;;;;;;  "modes/cd-chinese.el" "modes/cd-elisp-style-guide.el" "modes/cd-hydra.el"
-;;;;;;  "modes/cd-ivy.el" "modes/cd-visuals.el") (0 0 0 0))
+;;;;;;  "modes/cd-ivy.el") (0 0 0 0))
 
 ;;;***
 

@@ -40,7 +40,6 @@
 (define-key python-mode-map (kbd "C-?") 'jedi:show-doc)
 (define-key python-mode-map (kbd "RET") 'newline-and-indent)
 (define-key python-mode-map (kbd "θ") 'lpy-quotes)
-(define-key python-mode-map (kbd "β") 'counsel-jedi)
 (define-key python-mode-map (kbd "C-M-j") 'lpy-goto)
 (define-key python-mode-map (kbd "C-c C-v") nil)
 (define-key python-mode-map (kbd "C-c C-r") nil)
@@ -60,7 +59,7 @@
 (require 'flyspell)
 (flyspell-delay-command 'python-indent-dedent-line-backspace)
 
-;; ;;;###autoload
+;;;###autoload
 (defun cd-python-hook ()
   (setq-local company-backends '(company-dabbrev-code company-keywords))
   (setq python-environment-virtualenv
@@ -70,6 +69,7 @@
     (setq jedi:environment-root "jedi")
     (setq jedi:environment-virtualenv python-environment-virtualenv)
     (add-to-list 'company-backends 'company-jedi))
+  (flycheck-mode)
   (electric-indent-mode -1)
   (auto-complete-mode -1)
   (company-mode)
@@ -78,8 +78,7 @@
   (setq forward-sexp-function 'cd-c-forward-sexp-function)
   (lpy-mode)
   (setq completion-at-point-functions '(lispy-python-completion-at-point t))
-  (setf (symbol-function #'jedi:handle-post-command) (lambda nil nil))
-  )
+  (setf (symbol-function #'jedi:handle-post-command) (lambda nil nil)))
 
 (defun cd-get-py-fname ()
   "Get the file name of a visibile `python-mode' buffer."

@@ -1,4 +1,5 @@
 (require 'geiser-mode)
+(require 'geiser-chez)
 (define-key geiser-mode-map (kbd "C-.") nil)
 (define-key geiser-mode-map (kbd "C-c C-l") 'geiser-eval-buffer)
 (setq geiser-active-implementations '(chez))
