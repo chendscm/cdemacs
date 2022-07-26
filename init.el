@@ -209,24 +209,7 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 ;; }}
 (require 'find-file-in-project)
-;; {{ magit
-(require 'magit)
-(ignore-errors
-  (diminish 'magit-auto-revert-mode))
-(setq magit-completing-read-function 'ivy-completing-read)
-(setq magit-item-highlight-face 'bold)
-(setq magit-repo-dirs-depth 1)
-(setq magit-repo-dirs
-      (mapcar
-       (lambda (dir)
-         (substring dir 0 -1))
-       (cl-remove-if-not
-        (lambda (project)
-          (unless (file-remote-p project)
-            (file-directory-p (concat project "/.git/"))))
-        (projectile-relevant-known-projects))))
-;; }}
-;; {{ compile
+; {{ compile
 (require 'compile)
 (diminish compilation-in-progress)
 (setq compilation-ask-about-save nil)
