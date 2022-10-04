@@ -1,29 +1,30 @@
 (require 'eaf)
 
-;; app
-(require 'eaf-browser)
+;; pdf
+(require 'eaf-pdf-viewer)
 
 ;; browser
-(require 'eaf-pdf-viewer)
+(require 'eaf-browser)
 (setq eaf-browser-continue-where-left-off t)
-(eaf-setq eaf-browser-enable-adblocker "true")
-(eaf-setq eaf-browser-remember-history "false")
-(setq eaf-browser-default-search-engine "duckduckgo")
-(eaf-setq eaf-browse-blank-page-url "https://duckduckgo.com")
-(eaf-setq eaf-browser-default-zoom "1.20")
+(setq eaf-browser-enable-adblocker t)
+(setq eaf-browser-remember-history nil)
+(eaf-setq eaf-browser-default-zoom "1.5")
 ;; Proxy
 (setq eaf-proxy-type "socks5")
 (setq eaf-proxy-host "127.0.0.1")
 (setq eaf-proxy-port "1080")
 
+;; video player
+(require 'eaf-video-player)
+
 ;; terminal
 (require 'eaf-terminal)
 
 ;;
-
+;; (setq eaf-evil-leader-key (kbd "<escape>"))
 
 ;;;##autoload
 (defun cd-eaf-hook ()
-  (define-key eaf-mode-map "," 'hydra-dao/body))
+  (define-key eaf-mode-map "," 'hydra-one-symbol/body))
 
 (provide 'cd-eaf)

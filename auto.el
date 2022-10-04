@@ -1,5 +1,20 @@
 ;;* Navigation
-;;;###autoload 
+;;;###autoload
+(defun cd-backward-delete-whitespace()
+  (interactive)
+  (save-match-data
+    (let ((st (point))
+          (en (progn
+                (re-search-backward "[^ \t\r\n]+" nil t)
+                (forward-char 1)
+                (point))))
+      (if (= st en)
+          (progn
+            (while (looking-back ")")
+              (backward-char))
+            (backward-kill-word 1))
+        (delete-region st en)))))
+
 (defun cd-c-forward-sexp-function (arg)
   (if (looking-at "^#")
       (forward-ifdef arg)
