@@ -1,37 +1,27 @@
 ;; keys -*- lexical-binding: t -*-
 ;;* Ctrl shortcus
-(global-set-key (kbd "C-\\") 'toggle-input-method)
+(global-set-key "\C-a" 'cd-move-beginning-of-line)      ; 'move-beginning-of-line
+;; (global-set-key "\C-b" 'backward-char)                ; default
+;; (global-set-key "\C-c" 'mode-specific-command-prefix) ; default
+;; (global-set-key "\C-d" 'delete-char)                  ; default
+;; (global-set-key "\C-e" 'move-end-of-line)             ; default
+;; (global-set-key "\C-f" 'forward-char)                 ; default
+;; (global-set-key "\C-g" 'keyboard-quit)                ; default
+;; (global-set-key "\C-h" nil)                           ; 'help-command
+;; (global-set-key "\C-i" 'indent-for-tab-command)       ; default
+;; (global-set-key "\C-j" 'newline)                      ; default
+;; (global-set-key "\C-k" 'kill-line)                    ; default
+;; (global-set-key "\C-l" 'recenter-top-bottom)          ; default
+;; (global-set-key "\C-m" 'newline-and-indent)           ; default
+;; (global-set-key "\C-n" 'next-line)                    ; default
+(global-set-key "\C-s" 'swiper)                          ; 'isearch-forward
+(global-set-key "\C-t" 'smex)                            ; 'transpose-chars
+(global-set-key "\C-u" 'undo)
+
+(global-set-key (kbd "C-/") 'toggle-input-method)
 
 
 ;;* Ctrl Meta shortcuts
-
-;;* Mod4 shortcuts
-(global-set-key "θ" 'cd-quotes)                             ; [q]
-;; (global-set-key "ω" 'self-insert-command)                 ; [w]
-;; (global-set-key (kbd "=") 'self-insert-command)           ; [e]
-(global-set-key "ρ" 'cd-brackets)                           ; [r]
-;; (global-set-key (kbd "~") 'self-insert-command)           ; [t]
-(global-set-key "υ" 'aya-expand)                             ; [y]
-(global-set-key "ψ" 'universal-argument)                     ; [u]
-(global-set-key "ϊ" 'hydra-avy/body)                         ; [i]
-;; (global-set-key (kbd "DEL") 'self-insert-command)         ; [o]
-(global-set-key (kbd "π") 'avy-goto-char)                    ; [p]
-;; (global-set-key (kbd "-") 'self-insert-command)           ; [a]
-;; (global-set-key (kbd "_") 'self-insert-command)           ; [s]
-;; (global-set-key (kbd ":") 'self-insert-command)           ; [d]
-(global-set-key "φ" 'cd-parens)                             ; [f]
-;; (global-set-key (kbd ">") 'self-insert-command)           ; [g]
-(global-set-key "η" 'cd-save-and-switch-buffer)             ; [h]
-;; (global-set-key (kbd ";") 'self-insert-command)           ; [j]
-(global-set-key "κ" 'hydra-k/body)                           ; [k]
-;; (global-set-key (kbd "<") 'self-insert-command)           ; [l]
-;; (global-set-key (kbd "+") 'self-insert-command)           ; [z]
-(global-set-key "χ" 'lispy-right)                            ; [x]
-(global-set-key "σ" 'cd-braces)                             ; [c]
-;; (global-set-key (kbd "RET") 'newline)                     ; [v]
-(global-set-key "β" nil)                                     ; [b]
-(global-set-key "ν" 'ace-window)                             ; [n]
-(global-set-key "μ" 'headlong-bookmark-jump)                 ; [m]
 
 ;;* C-x shortcuts
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
@@ -41,43 +31,50 @@
 ;;* Hydras
 (defhydra hydra-dao (global-map ",")
   "Dao"
-  ("d" hydra-sdcv/body "sdcv" :exit t))
+  ("w" hydra-window/body "window" :exit t)  
+  ("d" hydra-sdcv/body "sdcv" :exit t)
+  ("xf" counsel-find-file "find-file" :exit t)
+  ("xk" kill-buffer "kill-buffer" :exit t)
+  ("xs" save-buffer "save-buffer" :exit t)
+  ("xo" ace-window "ace-window" :exit t))
 
 (defhydra hydra-sdcv()
   "sdcv"
   ("b" sdcv-search-input "sdcv-input" :exit t)
   ("t" sdcv-search-input+ "sdcv-input+" :exit t))
 
-;; (defhydra hydra-dao (global-map ",")
-;;   "Dao"
-;;   ("," cd-comma "comma" :exit t)
-;;   ("." hydra-normal/body "normal" :exit t)
-;;   ;; ("." cd-dot "dot" :exit t)
-  
-;;   ("db" sdcv-search-input "sdcv-input" :exit t)
-;;   ("dt" sdcv-search-input+ "sdcv-input+" :exit t)
-  
-;;   ("bh" cd-save-and-switch-buffer "switch-buffer" :exit t)
-  
-;;   ("xf" counsel-find-file "find-file" :exit t)
-;;   ("xk" kill-buffer "kill-buffer" :exit t)
-;;   ("xs" save-buffer "save-buffer" :exit t)
-;;   ("xo" ace-window "ace-window" :exit t))
-
-;; (defhydra hydra-normal (:pre (set-cursor-color "#40e0d0")
-;;                         :post (set-cursor-color "#ffffff"))
-;;   "Normal mode"
-;;   ("l" forward-char)
-;;   ("h" backward-char)
-;;   ("j" next-line)
-;;   ("k" previous-line)
-;;   ("i" nil nil)
-;;   ("m" set-mark-command "mark")
-;;   ("a" move-beginning-of-line "beg")
-;;   ("e" move-end-of-line "end")
-;;   ("x" delete-char "del-char")
-;;   ("y" kill-ring-save "yank" :color blue)
-;;   ("q" nil nil))
+(defhydra hydra-window (:color red
+                        :columns nil)
+  "window"
+  ("h" windmove-left nil)
+  ("j" windmove-down nil)
+  ("k" windmove-up nil)
+  ("l" windmove-right nil)
+  ("H" hydra-move-splitter-left nil)
+  ("J" hydra-move-splitter-down nil)
+  ("K" hydra-move-splitter-up nil)
+  ("L" hydra-move-splitter-right nil)
+  ("v" (lambda ()
+         (interactive)
+         (split-window-right)
+         (windmove-right))
+       "vert")
+  ("x" (lambda ()
+         (interactive)
+         (split-window-below)
+         (windmove-down))
+       "horz")
+  ("t" transpose-frame "'" :exit t)
+  ("o" delete-other-windows "one" :exit t)
+  ("a" ace-window "ace")
+  ("s" ace-swap-window "swap")
+  ("d" ace-delete-window "del")
+  ("i" ace-maximize-window "ace-one" :exit t)
+  ("b" ido-switch-buffer "buf")
+  ("m" headlong-bookmark-jump "bmk")
+  ("q" nil "cancel")
+  ("u" (progn (winner-undo) (setq this-command 'winner-undo)) "undo")
+  ("f" nil))
 
 
 ;;* Text
@@ -157,19 +154,23 @@
 
 ;;** Modify
 (defhydra hydra-text-normal (:pre (set-cursor-color "#40e0d0")
-                        :post (set-cursor-color "#ffffff"))
+                             :post (set-cursor-color "#ffffff"))
   "Normal"
   ("l" forward-char)
   ("h" backward-char)
   ("j" next-line)
   ("k" previous-line)
-  ("i" nil nil)
-  ("m" set-mark-command "mark")
-  ("a" move-beginning-of-line "beg")
+  
+  ("a" cd-move-beginning-of-line "beg")
   ("e" move-end-of-line "end")
-  ("x" delete-char "del-char")
+  ("s" swiper "swiper")
   ("y" kill-ring-save "yank" :color blue)
-  ("o" nil nil))
+  ("u" undo)
+  ("x" delete-char "del-char")
+  ("m" set-mark-command "mark")
+  ("o" nil nil)
+  ("/" toggle-input-method "input" :exit t)
+  (";" nil nil))
 
 
 ;;** Control
@@ -180,8 +181,8 @@
         (t (hydra-text-normal/body))))
 
 
-(global-set-key "." 'cd-text)
-(define-key lispy-mode-map "." 'cd-text)
+(global-set-key ";" 'cd-text)
+(define-key lispy-mode-map ";" 'cd-text)
 
 ;;*
 (provide 'keys)
