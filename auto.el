@@ -1,6 +1,6 @@
 ;;* Navigation
 ;;;###autoload
-(defun ora-move-beginning-of-line ()
+(defun cd-move-beginning-of-line ()
   (interactive)
   (if (bolp)
       (back-to-indentation)

@@ -156,9 +156,18 @@ Threat is as function body when from endline before )" t nil)
 
 ;;;***
 
+;;;### (autoloads nil "modes/init-god-mode" "modes/init-god-mode.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from modes/init-god-mode.el
+
+(register-definition-prefixes "modes/init-god-mode" '("cd-god-mode-update-mode-line"))
+
+;;;***
+
 ;;;### (autoloads nil nil ("hooks.el" "modes/cd-auto.el" "modes/cd-avy.el"
-;;;;;;  "modes/cd-chinese.el" "modes/cd-elisp-style-guide.el" "modes/cd-hydra.el"
-;;;;;;  "modes/cd-ivy.el") (0 0 0 0))
+;;;;;;  "modes/cd-aweshell.el" "modes/cd-chinese.el" "modes/cd-elisp-style-guide.el"
+;;;;;;  "modes/cd-hydra.el" "modes/cd-ivy.el" "modes/cd-misc.el"
+;;;;;;  "modes/cd-visuals.el") (0 0 0 0))
 
 ;;;***
 
